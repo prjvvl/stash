@@ -1,0 +1,24 @@
+---
+import { siteConfig } from "../site.config";
+
+const year = new Date().getFullYear();
+const socialLinks = Object.entries(siteConfig.social).filter(([, url]) => url);
+---
+
+<footer class="border-t border-border bg-surface">
+  <div class="mx-auto flex max-w-5xl flex-col gap-4 px-4 py-8 md:flex-row md:items-center md:justify-between">
+    <p class="text-sm text-fg-muted">&copy; {year} {siteConfig.name}. Built with Trestle.</p>
+
+    {
+      socialLinks.length > 0 && (
+        <div class="flex gap-4">
+          {socialLinks.map(([platform, url]) => (
+            <a href={url} class="text-sm text-fg-muted hover:text-fg" rel="me noopener noreferrer" target="_blank">
+              {platform}
+            </a>
+          ))}
+        </div>
+      )
+    }
+  </div>
+</footer>

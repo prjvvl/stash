@@ -1,0 +1,15 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { siteConfig } from "../site.config";
+---
+
+<BaseLayout title="About">
+  <section class="mx-auto max-w-3xl px-4 py-16">
+    <h1 class="text-2xl font-bold text-fg">About {siteConfig.name}</h1>
+    <p class="mt-4 text-fg-muted">
+      This is an example page. Edit <code>src/pages/about.astro</code> directly, or replace this
+      section with content pulled from a Markdown collection if you'd rather manage it the same
+      way as blog posts.
+    </p>
+  </section>
+</BaseLayout>

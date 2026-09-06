@@ -1,0 +1,45 @@
+---
+import { FileText, Rocket, Puzzle } from "@lucide/astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import Button from "../components/Button.astro";
+import Card from "../components/Card.astro";
+import { siteConfig } from "../site.config";
+
+const features = [
+  {
+    icon: FileText,
+    title: "Content in Markdown",
+    description: "Pages and posts are plain Markdown with YAML frontmatter, no HTML, CSS, or JS required.",
+  },
+  {
+    icon: Rocket,
+    title: "Deploys itself",
+    description: "Push to main and GitHub Actions builds and publishes to GitHub Pages automatically.",
+  },
+  {
+    icon: Puzzle,
+    title: "Grows with you",
+    description: "Built on Astro islands. Drop in a React component wherever you need real interactivity.",
+  },
+];
+---
+
+<BaseLayout title={siteConfig.name}>
+  <Hero title={siteConfig.name} subtitle={siteConfig.description}>
+    <Button href="/blog">Read the blog</Button>
+    <Button href="/about" variant="secondary">About this site</Button>
+  </Hero>
+
+  <section class="mx-auto max-w-5xl px-4 pb-20">
+    <div class="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
+      {
+        features.map(({ icon: Icon, title, description }) => (
+          <Card title={title} description={description}>
+            <Icon slot="icon" class="size-5 text-brand" aria-hidden="true" />
+          </Card>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>
