@@ -9,6 +9,9 @@ import { createClient } from "@supabase/supabase-js";
 const USERNAME_DOMAIN = "stash.invalid";
 const usernameToEmail = (username) => `${username}@${USERNAME_DOMAIN}`;
 
+// Required by RLS — see 0003_require_stash_user_claim.sql.
+const STASH_USER_CLAIM = { stash_user: true };
+
 const supabaseUrl = process.env.PUBLIC_SUPABASE_URL;
 const secretKey = process.env.SUPABASE_SECRET_KEY;
 if (!supabaseUrl || !secretKey) {
@@ -48,7 +51,12 @@ async function main() {
   if (command === "create") {
     if (!username || !password) return usage();
     const email = usernameToEmail(username);
-    const { data, error } = await admin.auth.admin.createUser({ email, password, email_confirm: true });
+    const { data, error } = await admin.auth.admin.createUser({
+      email,
+      password,
+      email_confirm: true,
+      app_metadata: STASH_USER_CLAIM,
+    });
     if (error) throw error;
     console.log(`Created user ${username} (${data.user.id})`);
   } else if (command === "set-password") {

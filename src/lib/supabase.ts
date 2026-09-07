@@ -9,7 +9,10 @@ if (!SUPABASE_URL || !SUPABASE_PUBLISHABLE_KEY) {
   throw new Error("Missing PUBLIC_SUPABASE_URL or PUBLIC_SUPABASE_PUBLISHABLE_KEY — check .env (see .env.example).");
 }
 
-export const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+// Distinct key so a signed-in Anchor session (same origin, same project) doesn't carry over.
+export const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY, {
+  auth: { storageKey: "sb-stash-auth-token" },
+});
 
 // Supabase auth is email-based; usernames are mapped to emails at this fake,
 // reserved domain (RFC 2606 .invalid — guaranteed non-routable) so nothing
