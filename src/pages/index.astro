@@ -1,13 +1,11 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Hero from "../components/Hero.astro";
+import StashApp from "../components/StashApp";
 import { siteConfig } from "../site.config";
 ---
 
 <BaseLayout title={siteConfig.name}>
-  <Hero title={siteConfig.name} subtitle={siteConfig.description} />
-  {
-    /* Placeholder homepage — replaced by the StashApp React island
-       (auth gate + file/snippet list) in a later step. */
-  }
+  <div class="mx-auto max-w-4xl px-4 py-16">
+    <StashApp client:load />
+  </div>
 </BaseLayout>

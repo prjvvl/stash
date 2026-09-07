@@ -21,8 +21,6 @@ export const siteConfig = {
     linkedin: "",
   },
 
-  nav: [{ label: "Home", href: "/" }],
-
   /** Off by default. Each is a self-contained fast-follow, not required for a working site. */
   features: {
     search: false,

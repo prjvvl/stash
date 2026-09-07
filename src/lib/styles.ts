@@ -23,4 +23,5 @@ const buttonBaseClass =
 export const buttonVariantClass = {
   primary: `${buttonBaseClass} bg-brand text-brand-fg hover:bg-brand-700`,
   secondary: `${buttonBaseClass} border border-border text-fg hover:border-brand-300 hover:bg-surface`,
+  danger: `${buttonBaseClass} bg-error text-white hover:opacity-90`,
 } as const;
