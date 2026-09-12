@@ -7,7 +7,14 @@ const socialLinks = Object.entries(siteConfig.social).filter(([, url]) => url);
 
 <footer class="border-t border-border bg-surface">
   <div class="mx-auto flex max-w-5xl flex-col gap-4 px-4 py-8 md:flex-row md:items-center md:justify-between">
-    <p class="text-sm text-fg-muted">&copy; {year} {siteConfig.name}. Built with Trestle.</p>
+    <p class="text-sm text-fg-muted">
+      &copy; {year} {siteConfig.name}. Built with <a
+        href="https://github.com/prjvvl/trestle"
+        class="hover:text-fg underline underline-offset-2"
+        rel="noopener noreferrer"
+        target="_blank"
+      >Trestle</a>.
+    </p>
 
     {
       socialLinks.length > 0 && (
